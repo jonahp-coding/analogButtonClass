@@ -10,7 +10,7 @@ class analogButton {
       analogPin = x;
     }
 
-    bool checkButton() {
+    bool check() {
       uint16_t analogValue = analogRead(analogPin);
 
       prevState = state;
@@ -43,9 +43,18 @@ class analogButton {
   
   private:
     uint16_t buttonHighThreshold = 1000; // CHANGE THIS
-    uint16_t buttonLowThreshold = 40; // CHANGE THIS
+    uint16_t buttonLowThreshold = 100; // CHANGE THIS
 
 };
+
+analogButton buttonOne(A0);
+analogButton buttonTwo(A1);
+analogButton buttonThree(A2);
+analogButton buttonFour(A3);
+analogButton buttonFive(A4);
+analogButton buttonSix(A5);
+analogButton buttonSeven(A6);
+analogButton buttonEight(A7);
 
 void setup() {
 
@@ -55,38 +64,11 @@ void setup() {
 
 void loop() {
 
-  analogButton startButton(A0);
-  analogButton RunButton(A1);
-  analogButton threeButton(A2);
-  analogButton fourButton(A3);
-  analogButton fiveButton(A4);
-  analogButton sixButton(A5);
-  analogButton sevenButton(A6);
-  analogButton eightButton(A7);
+  if (buttonOne.check() == 1) {
+    // button has been pressed
 
-  Serial.print("startButton: ");
-  Serial.println(startButton.checkButton());
-
-  Serial.print("RunButton: ");
-  Serial.println(RunButton.checkButton());
-
-  Serial.print("threeButton: ");
-  Serial.println(threeButton.checkButton());
-
-  Serial.print("fourButton: ");
-  Serial.println(fourButton.checkButton());
-
-  Serial.print("fiveButton: ");
-  Serial.println(fiveButton.checkButton());
-
-  Serial.print("sixButton: ");
-  Serial.println(sixButton.checkButton());
-
-  Serial.print("sevenButton: ");
-  Serial.println(sevenButton.checkButton());
-
-  Serial.print("eightButton: ");
-  Serial.println(eightButton.checkButton());
+    Serial.println("ButtonOne: Pressed!!");
+  }
 
   Serial.println("=========================");
 
