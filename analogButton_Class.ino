@@ -21,17 +21,19 @@ class analogButton {
       } else {
         state = 0;
       }
+
+      return returnState();
     }
 
-    uint16_t stateRawReturn() {
+    uint16_t returnAnalog() {
       return analogRead(analogPin);
     }
 
-    bool stateReturn() {
+    bool returnState() {
       return state;
     }
 
-    bool prevStateReturn() {
+    bool returnPrevState() {
       return prevState;
     }
 
@@ -53,20 +55,40 @@ void setup() {
 
 void loop() {
 
-  analogButton buttonOne(A0);
+  analogButton startButton(A0);
+  analogButton RunButton(A1);
+  analogButton threeButton(A2);
+  analogButton fourButton(A3);
+  analogButton fiveButton(A4);
+  analogButton sixButton(A5);
+  analogButton sevenButton(A6);
+  analogButton eightButton(A7);
 
-  buttonOne.checkButton();
+  Serial.print("startButton: ");
+  Serial.println(startButton.checkButton());
 
-  Serial.println(buttonOne.stateRawReturn());
+  Serial.print("RunButton: ");
+  Serial.println(RunButton.checkButton());
 
-  /*Serial.print("buttonOne: ");
-  Serial.println(buttonOne);
+  Serial.print("threeButton: ");
+  Serial.println(threeButton.checkButton());
 
-  Serial.print("buttonTwo: ");
-  Serial.println(buttonTwo);
+  Serial.print("fourButton: ");
+  Serial.println(fourButton.checkButton());
+
+  Serial.print("fiveButton: ");
+  Serial.println(fiveButton.checkButton());
+
+  Serial.print("sixButton: ");
+  Serial.println(sixButton.checkButton());
+
+  Serial.print("sevenButton: ");
+  Serial.println(sevenButton.checkButton());
+
+  Serial.print("eightButton: ");
+  Serial.println(eightButton.checkButton());
 
   Serial.println("=========================");
-  */
 
   delay(100);
 
